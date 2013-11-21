@@ -1,0 +1,30 @@
+{
+  "name": "grunt-audiotheme",
+  "description": "Common tasks when preparing AudioTheme themes and plugins.",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://github.com/AudioTheme/grunt-audiotheme",
+  "author": {
+    "name": "Brady Vercher",
+    "email": "brady@audiotheme.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AudioTheme/grunt-audiotheme.git"
+  },
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "async": "~0.2.9",
+    "csscomb": "~1.0.0",
+    "grunt-contrib-jshint": "~0.6.4",
+    "underscore": "~1.5.2",
+    "underscore.string": "~2.3.3"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "cliff": "~0.1.8"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  }
+}
