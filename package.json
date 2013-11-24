@@ -16,15 +16,26 @@
   "dependencies": {
     "async": "~0.2.9",
     "csscomb": "~1.0.0",
-    "grunt-contrib-jshint": "~0.6.4",
+    "matchdep": "~0.3.0",
     "underscore": "~1.5.2",
     "underscore.string": "~2.3.3"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "cliff": "~0.1.8"
+    "cliff": "~0.1.8",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.6.4"
   },
   "peerDependencies": {
-    "grunt": "~0.4.1"
-  }
+    "grunt": "~0.4.2",
+    "grunt-autoprefixer": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "~0.5.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-ssh": "~0.8.0",
+    "grunt-todos": "~0.2.0"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
 }
