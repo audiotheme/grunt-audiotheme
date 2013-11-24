@@ -15,6 +15,9 @@ module.exports = function(grunt) {
 		util = require('./lib/util').init(grunt),
 		userConfig = util.getUserConfig();
 
+	// Load all grunt module peerDependencies.
+	require('matchdep').filterPeer('grunt-*').forEach(grunt.loadNpmTasks);
+
 	/**
 	 * The entry point.
 	 *
