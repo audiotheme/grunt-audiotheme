@@ -7,7 +7,7 @@
 	"block-indent": "\t",
 	"colon-space": true,
 	"color-case": "lower",
-	"color-shorthand": false,
+	"color-shorthand": true,
 	"combinator-space": true,
 	"element-case": "lower",
 	"eof-newline": true,
