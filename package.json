@@ -15,7 +15,7 @@
   "main": "Gruntfile.js",
   "dependencies": {
     "async": "~0.2.9",
-    "csscomb": "~1.0.0",
+    "csscomb": "~2.0.3",
     "matchdep": "~0.3.0",
     "underscore": "~1.5.2",
     "underscore.string": "~2.3.3"
