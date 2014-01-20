@@ -16,7 +16,6 @@
   "dependencies": {
     "async": "~0.2.9",
     "csscomb": "~2.0.3",
-    "matchdep": "~0.3.0",
     "underscore": "~1.5.2",
     "underscore.string": "~2.3.3"
   },
@@ -33,7 +32,8 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-jshint": "~0.7.0",
     "grunt-ssh": "~0.8.0",
-    "grunt-todos": "~0.2.0"
+    "grunt-todos": "~0.2.0",
+    "matchdep": "~0.3.0"
   },
   "keywords": [
     "gruntplugin"
