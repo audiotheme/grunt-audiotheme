@@ -13,7 +13,9 @@ module.exports = function(grunt) {
 	var pkg = grunt.file.readJSON('package.json');
 
 	// Alias release task for faster access.
-	grunt.registerTask('release', ['audiotheme:release']);
+	grunt.registerTask('release', function(version) {
+		grunt.task.run('audiotheme-release:' + version);
+	});
 
 	/**
 	 * The main release task.

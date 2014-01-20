@@ -16,7 +16,9 @@ module.exports = function(grunt) {
 		util = require('./lib/util').init(grunt);
 
 	// Alias build task for faster access.
-	grunt.registerTask('build', ['audiotheme:build']);
+	grunt.registerTask('build', function(version) {
+		grunt.task.run('audiotheme-build:' + version);
+	});
 
 	/**
 	 * The main build task.
