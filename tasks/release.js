@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 			});
 		}
 
-		grunt.task.run('sftp:audiotheme-release');
+		grunt.task.run('sftp:release');
 	});
 
 };
