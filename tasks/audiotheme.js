@@ -122,7 +122,7 @@ module.exports = function(grunt) {
 
 		// Set makepot defaults for the build task.
 		if (options.makepot) {
-			util.setTaskDefaults('makepot');
+			grunt.config.set('makepot.build.options.type', 'wp-' + grunt.option('audiotheme-type'));
 		}
 
 		// Set grunt-ssh defaults for the release task.
