@@ -14,7 +14,8 @@ module.exports = function(grunt) {
 
 	// Alias release task for faster access.
 	grunt.registerTask('release', function(version) {
-		grunt.task.run('audiotheme-release:' + version);
+		version = version ? ':' + version : '';
+		grunt.task.run('audiotheme-release' + version);
 	});
 
 	/**

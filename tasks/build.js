@@ -17,7 +17,8 @@ module.exports = function(grunt) {
 
 	// Alias build task for faster access.
 	grunt.registerTask('build', function(version) {
-		grunt.task.run('audiotheme-build:' + version);
+		version = version ? ':' + version : '';
+		grunt.task.run('audiotheme-build' + version);
 	});
 
 	/**
