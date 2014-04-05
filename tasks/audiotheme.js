@@ -62,6 +62,7 @@ module.exports = function(grunt) {
 		options = _.extend({
 			autoprefixer: true,
 			clean: true,
+			cssjanus: true,
 			compress: true,
 			copy: true,
 			jshint: true,
@@ -78,6 +79,11 @@ module.exports = function(grunt) {
 		// Set grunt-contrib-clean defaults for the build task.
 		if (options.clean) {
 			util.setTaskDefaults('clean', { name: pkg.name.toLowerCase() });
+		}
+
+		// Set grunt-cssjanus defaults for the build task.
+		if (options.cssjanus) {
+			util.setTaskDefaults('cssjanus');
 		}
 
 		// Set grunt-contrib-compress defaults for the build task.
