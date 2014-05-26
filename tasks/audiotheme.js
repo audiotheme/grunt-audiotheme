@@ -15,6 +15,8 @@ module.exports = function(grunt) {
 		util = require('./lib/util').init(grunt),
 		userConfig = util.getUserConfig();
 
+	require('time-grunt')(grunt);
+
 	// Load all grunt module peerDependencies.
 	require('matchdep').filterPeer('grunt-*').forEach(grunt.loadNpmTasks);
 
