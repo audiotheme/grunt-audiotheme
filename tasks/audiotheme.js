@@ -135,11 +135,6 @@ module.exports = function(grunt) {
 				path: userConfig.production.releasePath
 			});
 		}
-
-		// Set grunt-todos defaults.
-		if (options.todos) {
-			util.setTaskDefaults('todos');
-		}
 	});
 
 	grunt.task.run('audiotheme');
