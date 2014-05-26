@@ -65,6 +65,17 @@ module.exports = function(grunt) {
 			}).join('\n\n');
 
 			combed = comb.processString(contents);
+
+			// Add two newlines after curly braces.
+			combed = combed.replace(/}\s+?(\t)?/g, '}\n\n$1');
+			// Add newlines around comment blocks.
+			combed = combed.replace(/}\s*\/\*/g, '}\n\n\n/*');
+			combed = combed.replace(/(-| )\*\/\s+/g, '$1*/\n\n');
+			// Fix indentation of multiple selectors in a media query.
+			combed = combed.replace(/,[\n\r]+  \./g, ',\n\t.');
+			// Add EOF newline.
+			combed = combed.trim() + '\n';
+
 			grunt.file.write(f.dest, combed);
 		});
 	});

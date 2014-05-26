@@ -100,7 +100,7 @@ module.exports = function(grunt) {
 			function(callback) {
 				// Replace '@since x.x.x' tokens throughout the codebase.
 				var files = ['*.php', '**/*.php', '!docs/**', '!node_modules/**', '!release/**'];
-				util.replaceInFiles(/@since x.x.x/gi, '@since ' + version, files, callback);
+				util.replaceInFiles(/@since x\.x\.x/gi, '@since ' + version, files, callback);
 			}
 		], function(error, result) {
 			done(error, result);
