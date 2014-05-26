@@ -1,7 +1,9 @@
 module.exports = {
 	build: {
 		options: {
-			type: 'wp-theme'
+			exclude: ['.git/.*', 'node_modules/.*', 'release/.*'],
+			type: 'wp-theme',
+			updateTimestamp: false
 		}
 	}
 }
