@@ -97,9 +97,24 @@ module.exports = function(grunt) {
 		// @todo Toggle these off with a boolean.
 		async.series([
 			function(callback) {
+				// Replace version in package.json.
+				var files = ['package.json'];
+				util.replaceInFiles(/"version": "\d+\.\d+\.\d+/gi, '"version": "' + version, files, callback);
+			},
+			function(callback) {
 				// Bump version numbers in main files.
-				var files = ['assets/styles/style.less', 'assets/styles/less/style.less'];
+				var files = [
+					'assets/css/less/style.less',
+					'assets/css/less/wpcom.less',
+					'assets/styles/style.less',
+					'assets/styles/less/style.less'
+				];
 				util.replaceInFiles(/Version:.*$/mi, 'Version: ' + version, files, callback);
+			},
+			function(callback) {
+				// Replace version in functions.php
+				var files = ['functions.php'];
+				util.replaceInFiles(/return '\d+\.\d+\.\d+/gi, "return '" + version, files, callback);
 			},
 			function(callback) {
 				// Replace '@since x.x.x' tokens throughout the codebase.
