@@ -20,5 +20,15 @@ module.exports = {
 				expand: true
 			}
 		]
+	},
+	buildwpcom: {
+		files: [
+			{
+				cwd: 'release/<%= name %>/',
+				src: ['**'],
+				dest: '../<%= name %>-wpcom',
+				expand: true
+			}
+		]
 	}
 }
