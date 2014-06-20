@@ -46,39 +46,43 @@ module.exports = function(grunt) {
 	 */
 	grunt.registerTask('audiotheme-build-theme', function(version) {
 		var tasks = [],
-			options;
+			builds, options;
 
 		if (undefined === version) {
 			grunt.warn('Version must be defined for the audiotheme-build-theme task.');
 		}
 
-		options = _.extend({
-			tasks: []
-		}, grunt.config.get('audiotheme.build.options'));
+		builds = _.omit( grunt.config.get('audiotheme'), 'options' );
 
-		tasks = options.tasks;
-		tasks.unshift('audiotheme-bump-theme-version:' + version);
+		_.each( builds, function( item, index, list ) {
+			options = _.extend({
+				tasks: []
+			}, item.options);
 
-		// Set runtime options for various tasks.
-		options.tasks.forEach(function(task) {
-			if (0 === task.indexOf('jshint')) {
-				// Set JSHint 'devel' option to false.
-				grunt.config.set('jshint.options.devel', false);
+			tasks = options.tasks;
+			tasks.unshift('audiotheme-bump-theme-version:' + version);
 
-				util.getTargets('jshint').forEach(function(target) {
-					grunt.config.set('jshint.' + target + '.options.devel', false);
-				});
-			} else if (0 === task.indexOf('compress')) {
-				// Set the zip filename.
-				grunt.config.set('compress.build.options.archive', 'release/' + pkg.name.toLowerCase() + '-' + version + '.zip');
-			} else if (0 === task.indexOf('makepot')) {
-				// Set makepot to operate on the build directory.
-				grunt.config.set('makepot.build.options.cwd', 'release/' + pkg.name.toLowerCase());
-			}
+			// Set runtime options for various tasks.
+			options.tasks.forEach(function(task) {
+				if (0 === task.indexOf('jshint')) {
+					// Set JSHint 'devel' option to false.
+					grunt.config.set('jshint.options.devel', false);
+
+					util.getTargets('jshint').forEach(function(target) {
+						grunt.config.set('jshint.' + target + '.options.devel', false);
+					});
+				} else if (0 === task.indexOf('compress')) {
+					// Set the zip filename.
+					grunt.config.set('compress.build.options.archive', 'release/' + pkg.name.toLowerCase() + '-' + version + '.zip');
+				} else if (0 === task.indexOf('makepot')) {
+					// Set makepot to operate on the build directory.
+					grunt.config.set('makepot.build.options.cwd', 'release/' + pkg.name.toLowerCase());
+				}
+			});
+
+			// Run specified build tasks.
+			grunt.task.run(tasks);
 		});
-
-		// Run specified build tasks.
-		grunt.task.run(tasks);
 	});
 
 	/**
