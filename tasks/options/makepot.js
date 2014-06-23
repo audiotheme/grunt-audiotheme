@@ -1,7 +1,6 @@
 module.exports = {
 	build: {
 		options: {
-			cwd: 'release/<%= name %>',
 			exclude: ['.git/.*', 'node_modules/.*', 'release/.*'],
 			potHeaders: {
 				'report-msgid-bugs-to': 'http://audiotheme.com/support/',
