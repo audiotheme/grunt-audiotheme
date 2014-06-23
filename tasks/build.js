@@ -11,7 +11,6 @@
 module.exports = function(grunt) {
 
 	var _ = require('underscore'),
-		async = require('async'),
 		pkg = grunt.file.readJSON('package.json'),
 		util = require('./lib/util').init(grunt);
 
@@ -45,12 +44,15 @@ module.exports = function(grunt) {
 	 * audiotheme:build target.
 	 */
 	grunt.registerTask('audiotheme-build-theme', function(version) {
-		var tasks = [],
-			builds, options;
+		var builds = [],
+			options;
 
 		if (undefined === version) {
 			grunt.warn('Version must be defined for the audiotheme-build-theme task.');
 		}
+
+		// Set up the 'replace' task.
+		util.setTaskDefaults('replace', { version: version });
 
 		builds = _.omit( grunt.config.get('audiotheme'), 'options' );
 
@@ -59,8 +61,7 @@ module.exports = function(grunt) {
 				tasks: []
 			}, item.options);
 
-			tasks = options.tasks;
-			tasks.unshift('audiotheme-bump-theme-version:' + version);
+			options.tasks.unshift('replace');
 
 			// Set runtime options for various tasks.
 			options.tasks.forEach(function(task) {
@@ -81,48 +82,7 @@ module.exports = function(grunt) {
 			});
 
 			// Run specified build tasks.
-			grunt.task.run(tasks);
-		});
-	});
-
-	/**
-	 * Bump version numbers throughout the theme codebase.
-	 */
-	grunt.registerTask('audiotheme-bump-theme-version', function(version) {
-		var done = this.async();
-
-		version = version || pkg.version;
-
-		// @todo Allow the files to be configured.
-		// @todo Toggle these off with a boolean.
-		async.series([
-			function(callback) {
-				// Replace version in package.json.
-				var files = ['package.json'];
-				util.replaceInFiles(/"version": "\d+\.\d+\.\d+/gi, '"version": "' + version, files, callback);
-			},
-			function(callback) {
-				// Bump version numbers in main files.
-				var files = [
-					'assets/css/less/style.less',
-					'assets/css/less/wpcom.less',
-					'assets/styles/style.less',
-					'assets/styles/less/style.less'
-				];
-				util.replaceInFiles(/Version:.*$/mi, 'Version: ' + version, files, callback);
-			},
-			function(callback) {
-				// Replace version in functions.php
-				var files = ['functions.php'];
-				util.replaceInFiles(/return '\d+\.\d+\.\d+/gi, "return '" + version, files, callback);
-			},
-			function(callback) {
-				// Replace '@since x.x.x' tokens throughout the codebase.
-				var files = ['*.php', '**/*.php', '!docs/**', '!node_modules/**', '!release/**'];
-				util.replaceInFiles(/@since x\.x\.x/gi, '@since ' + version, files, callback);
-			}
-		], function(error, result) {
-			done(error, result);
+			grunt.task.run(options.tasks);
 		});
 	});
 
