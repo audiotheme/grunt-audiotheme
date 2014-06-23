@@ -18,18 +18,5 @@ module.exports = {
 			type: 'wp-theme',
 			updateTimestamp: false
 		}
-	},
-	buildwpcom: {
-		options: {
-			cwd: 'release/<%= name %>',
-			exclude: ['.git/.*', 'node_modules/.*', 'release/.*'],
-			potHeaders: {
-				'report-msgid-bugs-to': 'http://audiotheme.com/support/',
-				'language': 'en',
-				'plural-forms': 'nplurals=2; plural=(n != 1);',
-			},
-			type: 'wp-theme',
-			updateTimestamp: false
-		}
 	}
 }

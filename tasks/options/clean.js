@@ -8,7 +8,8 @@ module.exports = {
 		},
 		src: [
 			'../<%= name %>-wpcom/*',
-			'!../<%= name %>-wpcom/.svn'
+			'!../<%= name %>-wpcom/.svn',
+			'!../<%= name %>-wpcom/languages'
 		]
 	}
 }
