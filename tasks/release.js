@@ -40,16 +40,20 @@ module.exports = function(grunt) {
 	 * Uses credentials specified in config.json in the project root.
 	 */
 	grunt.registerTask('audiotheme-release-theme', function(version) {
+		var file = 'release/' + pkg.name.toLowerCase() + '-' + version + '.zip';
+
 		if (undefined === version) {
 			grunt.warn('Version must be defined for the audiotheme-release-theme task.');
 		}
 
-		// @todo git tag, commit, and push to origin
+		if (!grunt.file.exists(file)) {
+			grunt.warn('The package archive doesn\'t exist at: ' + file);
+		}
 
 		// Set a reference to the most recent build in order to upload it.
 		if (undefined === grunt.config.get('sftp.release.files')) {
 			grunt.config.set('sftp.release.files', {
-				'./': ['release/' + pkg.name.toLowerCase() + '-' + version + '.zip']
+				'./': [ file ]
 			});
 		}
 
