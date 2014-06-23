@@ -54,9 +54,17 @@ module.exports = function(grunt) {
 		// Set up the 'replace' task.
 		util.setTaskDefaults('replace', { version: version });
 
+		// Run all build targets.
 		builds = _.omit( grunt.config.get('audiotheme'), 'options' );
 
-		_.each( builds, function( item, index, list ) {
+		_.each(builds, function(item, index) {
+			// Limit to a single build: grunt build --{target}
+			if (grunt.option(index)) {
+				builds = _.pick(builds, index);
+			}
+		});
+
+		_.each(builds, function(item, index, list) {
 			options = _.extend({
 				tasks: []
 			}, item.options);
