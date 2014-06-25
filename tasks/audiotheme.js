@@ -69,6 +69,7 @@ module.exports = function(grunt) {
 			copy: true,
 			jshint: true,
 			makepot: true,
+			pixrem: true,
 			sftp: true,
 		}, options);
 
@@ -132,6 +133,11 @@ module.exports = function(grunt) {
 			util.setTaskDefaults('makepot', { name: pkg.name.toLowerCase() });
 			grunt.config.set('makepot.build.options.type', 'wp-' + grunt.option('audiotheme-type'));
 			grunt.config.set('makepot.wpcom.options.type', 'wp-' + grunt.option('audiotheme-type'));
+		}
+
+		// Set grunt-pixrem defaults.
+		if (options.pixrem) {
+			util.setTaskDefaults('pixrem');
 		}
 
 		// Set grunt-ssh defaults for the release task.
