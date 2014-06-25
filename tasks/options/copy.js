@@ -21,6 +21,16 @@ module.exports = {
 			}
 		]
 	},
+	buildwporg: {
+		files: [
+			{
+				cwd: 'release/<%= name %>/',
+				src: ['**'],
+				dest: '../<%= name %>-wporg',
+				expand: true
+			}
+		]
+	},
 	buildwpcom: {
 		files: [
 			{
