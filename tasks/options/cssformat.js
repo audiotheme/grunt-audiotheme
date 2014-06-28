@@ -1,7 +1,14 @@
 module.exports = {
 	audiotheme: {
-		files: {
-			'style.css': ['style.css']
-		}
+		files: [
+			{
+				src: 'assets/css/editor-style.css',
+				dest: 'assets/css/editor-style.css'
+			},
+			{
+				src: 'style.css',
+				dest: 'style.css'
+			}
+		]
 	}
 }
