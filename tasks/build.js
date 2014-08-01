@@ -69,7 +69,9 @@ module.exports = function(grunt) {
 				tasks: []
 			}, item.options);
 
-			options.tasks.unshift('replace');
+			if (!grunt.option('update-versions')) {
+				options.tasks.unshift('replace');
+			}
 
 			// Set runtime options for various tasks.
 			options.tasks.forEach(function(task) {
