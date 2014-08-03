@@ -1,4 +1,7 @@
 module.exports = {
+	options: {
+		config: 'alphabetical',
+	},
 	audiotheme: {
 		files: [
 			{
