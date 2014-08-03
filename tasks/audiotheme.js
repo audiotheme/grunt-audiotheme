@@ -71,6 +71,7 @@ module.exports = function(grunt) {
 			makepot: true,
 			pixrem: true,
 			sftp: true,
+			wpcss: true,
 		}, options);
 
 		// Set grunt-autoprefixer defaults.
@@ -110,11 +111,6 @@ module.exports = function(grunt) {
 			}
 		}
 
-		// Set cssformat defaults.
-		if (options.compress) {
-			util.setTaskDefaults('cssformat');
-		}
-
 		// Explicitly set options for each JSHint target.
 		// - Custom options are merged with defaults from /config/.jshintrc.json.
 		// - The theme package can set a .jshintrc and those properties can
@@ -149,6 +145,11 @@ module.exports = function(grunt) {
 				password: userConfig.production.password,
 				path: userConfig.production.releasePath
 			});
+		}
+
+		// Set grunt-wp-css defaults.
+		if (options.wpcss) {
+			util.setTaskDefaults('wpcss');
 		}
 	});
 
