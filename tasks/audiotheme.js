@@ -62,6 +62,7 @@ module.exports = function(grunt) {
 			excludes, files;
 
 		options = _.extend({
+			addtextdomain: true,
 			autoprefixer: true,
 			clean: true,
 			cssjanus: true,
@@ -73,6 +74,11 @@ module.exports = function(grunt) {
 			sftp: true,
 			wpcss: true,
 		}, options);
+
+		// Set addtextdomain defaults.
+		if (options.addtextdomain) {
+			util.setTaskDefaults('addtextdomain', { name: pkg.name.toLowerCase() });
+		}
 
 		// Set grunt-autoprefixer defaults.
 		if (options.autoprefixer) {
