@@ -69,7 +69,7 @@ module.exports = function(grunt) {
 				tasks: []
 			}, item.options);
 
-			if (!grunt.option('update-versions')) {
+			if (grunt.option('update-versions')) {
 				options.tasks.unshift('replace');
 			}
 
