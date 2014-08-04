@@ -134,7 +134,6 @@ module.exports = function(grunt) {
 		if (options.makepot) {
 			util.setTaskDefaults('makepot', { name: pkg.name.toLowerCase() });
 			grunt.config.set('makepot.build.options.type', 'wp-' + grunt.option('audiotheme-type'));
-			grunt.config.set('makepot.wpcom.options.type', 'wp-' + grunt.option('audiotheme-type'));
 		}
 
 		// Set grunt-pixrem defaults.
