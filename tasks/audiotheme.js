@@ -72,6 +72,7 @@ module.exports = function(grunt) {
 			makepot: true,
 			pixrem: true,
 			sftp: true,
+			sshconfig: true,
 			wpcss: true,
 		}, options);
 
@@ -144,11 +145,17 @@ module.exports = function(grunt) {
 		// Set grunt-ssh defaults for the release task.
 		if (options.sftp && grunt.file.exists('config.json')) {
 			util.setTaskDefaults('sftp', {
+				path: userConfig.production.releasePath
+			});
+		}
+
+		// Set grunt-ssh defaults.
+		if (options.sshconfig && grunt.file.exists('config.json')) {
+			util.setTaskDefaults('sshconfig', {
 				host: userConfig.production.host,
 				port: userConfig.production.port || 22,
 				username: userConfig.production.username,
 				password: userConfig.production.password,
-				path: userConfig.production.releasePath
 			});
 		}
 

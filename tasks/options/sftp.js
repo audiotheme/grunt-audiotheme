@@ -1,12 +1,9 @@
 module.exports = {
 	release: {
 		options: {
+			config: 'production',
 			path: '<%= path %>',
 			srcBasePath: 'release/',
-			host: '<%= host %>',
-			port: '<%= port %>',
-			username: '<%= username %>',
-			password: '<%= password %>'
 		}
 	}
 }
