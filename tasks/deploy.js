@@ -12,7 +12,7 @@ module.exports = function( grunt ) {
 
 	var pkg = grunt.file.readJSON( 'package.json' ),
 		util = require('./lib/util').init( grunt ),
-		userConfig = util.getUserConfig()
+		userConfig = util.getUserConfig();
 
 	grunt.registerTask( 'deploy', function() {
 		var data,
