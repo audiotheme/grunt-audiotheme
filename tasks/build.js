@@ -82,6 +82,9 @@ module.exports = function(grunt) {
 					util.getTargets('jshint').forEach(function(target) {
 						grunt.config.set('jshint.' + target + '.options.devel', false);
 					});
+				} else if (0 === task.indexOf('addtextdomain') && ! grunt.config.get('addtextdomain.build.cwd')) {
+					// Set addtextdomain to operate on the build directory.
+					grunt.config.set('addtextdomain.build.cwd', 'release/' + pkg.name.toLowerCase());
 				} else if (0 === task.indexOf('compress')) {
 					// Set the zip filename.
 					grunt.config.set('compress.build.options.archive', 'release/' + pkg.name.toLowerCase() + '-' + version + '.zip');

@@ -6,13 +6,10 @@ module.exports = {
 		options: {
 			updateDomains: ['cedaro-theme']
 		},
-		files: [
-			{
-				src: [
-					'includes/vendor/cedaro-theme/*.php',
-					'includes/vendor/cedaro-theme/**/*.php'
-				]
-			}
+		expand: true,
+		src: [
+			'includes/vendor/*.php',
+			'includes/vendor/**/*.php'
 		]
 	}
 }
